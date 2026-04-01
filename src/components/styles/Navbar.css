@@ -3,7 +3,10 @@
   max-width: var(--cMaxWidth);
   width: var(--cWidth);
   justify-content: space-between;
-  padding: 20px 0px;
+  align-items: center;
+
+  padding: 12px 0px;   /* FIX — reduces vertical push */
+
   margin-bottom: -100px;
   box-sizing: border-box;
   position: fixed;
@@ -12,6 +15,7 @@
   top: 0;
   z-index: 9999;
 }
+
 .header ul {
   font-size: 12px;
   display: flex;
@@ -19,10 +23,15 @@
   margin: 0;
   padding: 0;
   list-style: none;
+
   column-gap: 40px;
   row-gap: 8px;
+
   align-items: end;
+
+  transform: translateY(-100px); /* moves menu UP */
 }
+
 .header ul li {
   margin-left: 0px;
   letter-spacing: 1px;
@@ -30,54 +39,72 @@
   font-weight: 600;
   cursor: pointer;
 }
+
 .navbar-connect {
   position: absolute;
   display: none;
+
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 15px;
-  letter-spacing: 1px;
-  font-weight: 500;
+  transform: translate(-50%, -490%); /* moved UP */
 }
+
 .navbar-title {
-  font-weight: 700;
-  font-size: 14px;
-  letter-spacing: 0.2px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  transform: translateY(-80px);  /* Moves logo UP */
 }
+
+.logo-img {
+  height: 100px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
 @media only screen and (min-width: 500px) {
   .header {
-    padding: 20px 0px;
+    padding: 26px 0px;
   }
+
   .header ul {
     flex-direction: row;
     align-items: center;
     font-size: 14px;
   }
+
   .header ul li {
     color: #eae5ec;
   }
+
   .navbar-title {
     font-size: 16px;
   }
 }
+
 @media only screen and (min-width: 900px) {
   .navbar-connect {
     display: block;
   }
 }
+
 @media only screen and (min-width: 1200px) {
   .header {
     padding: 35px 0px;
   }
+
   .header ul {
     column-gap: 80px;
     font-size: 16px;
   }
+
   .navbar-connect {
     font-size: 16px;
   }
-  .navbar-title {
-    font-size: 18px;
+
+  .logo-img {
+    height: 250px;
   }
 }

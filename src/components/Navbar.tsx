@@ -23,35 +23,52 @@ const Navbar = () => {
     smoother.scrollTop(0);
     smoother.paused(true);
 
-    let links = document.querySelectorAll(".header ul a");
+    const links = document.querySelectorAll(".header ul a");
+
     links.forEach((elem) => {
-      let element = elem as HTMLAnchorElement;
+      const element = elem as HTMLAnchorElement;
       element.addEventListener("click", (e) => {
         if (window.innerWidth > 1024) {
           e.preventDefault();
-          let elem = e.currentTarget as HTMLAnchorElement;
-          let section = elem.getAttribute("data-href");
-          smoother.scrollTo(section, true, "top top");
+          const current = e.currentTarget as HTMLAnchorElement;
+          const section = current.getAttribute("data-href");
+          if (section) {
+            smoother.scrollTo(section, true, "top top");
+          }
         }
       });
     });
-    window.addEventListener("resize", () => {
+
+    const handleResize = () => {
       ScrollSmoother.refresh(true);
-    });
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
+
   return (
     <>
       <div className="header">
         <a href="/#" className="navbar-title" data-cursor="disable">
-          Logo
+          <img
+            src="/images/logo.png"
+            alt="Siddharth Rastogi Logo"
+            className="logo-img"
+          />
         </a>
+
         <a
-          href="mailto:example@mail.com"
+          href="mailto:siddharthrastogi221@gmail.com"
           className="navbar-connect"
           data-cursor="disable"
         >
-          example@mail.com
+          siddharthrastogi221@gmail.com
         </a>
+
         <ul>
           <li>
             <a data-href="#about" href="#about">
