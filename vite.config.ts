@@ -1,7 +1,19 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
-// https://vitejs.dev/config/
+const env =
+  (
+    globalThis as typeof globalThis & {
+      process?: { env?: Record<string, string | undefined> };
+    }
+  ).process?.env ?? {};
+
+const repositoryName = env.GITHUB_REPOSITORY?.split("/")[1];
+const base =
+  env.VITE_BASE_PATH ??
+  (env.GITHUB_ACTIONS && repositoryName ? `/${repositoryName}/` : "/");
+
 export default defineConfig({
+  base,
   plugins: [react()],
 });
