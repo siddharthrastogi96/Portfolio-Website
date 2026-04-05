@@ -2,7 +2,12 @@ import { useEffect, useState } from "react";
 import "./styles/Loading.css";
 import { useLoading } from "../context/LoadingProvider";
 
-import Marquee from "react-fast-marquee";
+import MarqueeImport from "react-fast-marquee";
+
+// This package resolves to a nested default export in this Vite setup.
+const Marquee =
+  (MarqueeImport as unknown as { default?: React.ElementType }).default ??
+  (MarqueeImport as unknown as React.ElementType);
 
 const Loading = ({ percent }: { percent: number }) => {
   const { setIsLoading } = useLoading();
@@ -10,28 +15,49 @@ const Loading = ({ percent }: { percent: number }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [clicked, setClicked] = useState(false);
 
-  if (percent >= 100) {
-    setTimeout(() => {
+  useEffect(() => {
+    if (percent < 100) {
+      return;
+    }
+
+    let loadedStateTimer: number | undefined;
+    const loadedTimer = window.setTimeout(() => {
       setLoaded(true);
-      setTimeout(() => {
+      loadedStateTimer = window.setTimeout(() => {
         setIsLoaded(true);
       }, 1000);
     }, 600);
-  }
+
+    return () => {
+      window.clearTimeout(loadedTimer);
+      if (loadedStateTimer) {
+        window.clearTimeout(loadedStateTimer);
+      }
+    };
+  }, [percent]);
 
   useEffect(() => {
-    import("./utils/initialFX").then((module) => {
-      if (isLoaded) {
-        setClicked(true);
-        setTimeout(() => {
-          if (module.initialFX) {
-            module.initialFX();
-          }
-          setIsLoading(false);
-        }, 900);
+    if (!isLoaded) {
+      return;
+    }
+
+    let cancelled = false;
+    setClicked(true);
+
+    const finishTimer = window.setTimeout(async () => {
+      const module = await import("./utils/initialFX");
+      if (cancelled) {
+        return;
       }
-    });
-  }, [isLoaded]);
+      module.initialFX?.();
+      setIsLoading(false);
+    }, 900);
+
+    return () => {
+      cancelled = true;
+      window.clearTimeout(finishTimer);
+    };
+  }, [isLoaded, setIsLoading]);
 
   function handleMouseMove(e: React.MouseEvent<HTMLElement>) {
     const { currentTarget: target } = e;
