@@ -46,6 +46,13 @@ const setCharacter = (
                 footL.position.y = 3.36;
               }
 
+              // The source GLB isn't centered on its root, which becomes very noticeable
+              // on wide desktop canvases. Centering the loaded scene keeps laptop and
+              // mobile framing consistent without relying on CSS-only offsets.
+              const bounds = new THREE.Box3().setFromObject(character);
+              const center = bounds.getCenter(new THREE.Vector3());
+              character.position.x -= center.x;
+
               resolve(gltf);
 
               // Shader precompilation is helpful, but it should never block the app from loading.

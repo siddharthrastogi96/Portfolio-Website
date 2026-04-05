@@ -58,15 +58,14 @@ const Scene = () => {
       camera.updateProjectionMatrix();
 
       const resizeScene = (loadedCharacter?: THREE.Object3D | null) => {
-        const targetCharacter = loadedCharacter ?? characterRef.current;
         if (!canvasDiv.current) return;
         const { width, height } = getContainerSize();
         if (!width || !height) return;
         renderer.setSize(width, height);
         camera.aspect = width / height;
         camera.updateProjectionMatrix();
-        if (targetCharacter) {
-          handleResize(renderer, camera, canvasDiv, targetCharacter);
+        if (loadedCharacter ?? characterRef.current) {
+          handleResize(renderer, camera, canvasDiv);
         }
       };
 

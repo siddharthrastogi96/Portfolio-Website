@@ -1,8 +1,18 @@
 import "./styles/About.css";
+import { withBase } from "../utils/basePath";
 
 const About = () => {
   return (
     <div className="about-section" id="about">
+      <div className="about-media">
+        <div className="about-media-frame">
+          <img
+            src={withBase("images/cover.png")}
+            alt="Portrait of Siddharth Rastogi"
+            className="about-media-image"
+          />
+        </div>
+      </div>
       <div className="about-me">
         <h3 className="title">About Me</h3>
         <p className="para">

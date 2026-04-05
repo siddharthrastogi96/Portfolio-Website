@@ -49,6 +49,8 @@
   transform: translate(-50%, -50%);
 
   display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 23px;
 
   will-change: left, top;
@@ -57,12 +59,13 @@
 
 /* NEW — PNG Icon Styling (Archinect + Heyzine) */
 .social-icon-img {
-  width: 900px;
-  height: 900px;
+  width: 34px;
+  height: 34px;
   object-fit: contain;
   opacity: 0.9;
   transition: 0.3s ease;
   filter: brightness(0) invert(1); /* makes icons white */
+  display: block;
 }
 
 .social-icon-img:hover {
@@ -136,8 +139,8 @@ div.resume-button span {
   }
 
   .social-icon-img {
-    width: 30px;
-    height: 30px;
+    width: 28px;
+    height: 28px;
   }
 }
 

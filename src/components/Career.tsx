@@ -19,7 +19,7 @@ const Career = () => {
                 <h5>Opame Architects</h5>
                 <h5>Jaipur, India</h5>
               </div>
-              <h3>2020</h3>
+              <h3>Jun 2020 - Jun 2023</h3>
             </div>
             <p>
 Supported the design and documentation of residential, commercial, and community-based projects across schematic design, design development, and construction documentation phases. Assisted with zoning studies, spatial planning, detailed drawings, and graphic presentations. Conducted site visits, prepared hand-drawn and digital drawings, coordinated with vendors, and contributed to material research, cost analysis, and proposal preparation using Revit, AutoCAD, SketchUp, Rhino, Enscape, and Adobe Creative Suite.
@@ -32,7 +32,7 @@ Supported the design and documentation of residential, commercial, and community
                 <h5>Incube Design Associates</h5>
                 <h5>Gorakhpur, India</h5>               
               </div>
-              <h3>2023</h3>
+              <h3>Jul 2023 - Jun 2024</h3>
             </div>
              <p>
 Led and delivered residential, mixed-use, and institutional projects from design development through construction. Oversaw zoning layouts, circulation strategies, and construction documentation while supervising architects, consultants, and subcontractors. Managed client coordination, site execution, and interdisciplinary collaboration (structural, MEP, and contractors) to ensure design intent, quality, and schedule adherence. Mentored junior architects, reviewed drawings, and contributed to project optimization through research-driven design and cost-conscious material selection.
@@ -45,7 +45,7 @@ Led and delivered residential, mixed-use, and institutional projects from design
                 <h5>Instructional Facilities</h5>
                 <h5>University at Buffalo, NY</h5>               
               </div>
-              <h3>2025</h3>
+              <h3>May 2025 - Apr 2026</h3>
             </div>
              <p>
 Conducted classroom audits and managed issue triage to ensure timely resolution and compliance with university standards. Maintained and updated learning-space inventory databases, improving accuracy and operational efficiency. Supported project management efforts through vendor coordination,

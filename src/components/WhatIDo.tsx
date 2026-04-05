@@ -1,12 +1,20 @@
 import { useEffect, useRef } from "react";
 import "./styles/WhatIDo.css";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { gsap } from "gsap";
+import { withBase } from "../utils/basePath";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const WhatIDo = () => {
   const containerRef = useRef<(HTMLDivElement | null)[]>([]);
+  const logoRef = useRef<HTMLDivElement | null>(null);
+  const logoSrc = withBase("images/logo.png");
+
   const setRef = (el: HTMLDivElement | null, index: number) => {
     containerRef.current[index] = el;
   };
+
   useEffect(() => {
     if (ScrollTrigger.isTouch) {
       containerRef.current.forEach((container) => {
@@ -16,16 +24,68 @@ const WhatIDo = () => {
         }
       });
     }
+
+    const logo = logoRef.current;
+    let logoTween: gsap.core.Tween | null = null;
+
+    const syncLogoVisibility = () => {
+      logoTween?.scrollTrigger?.kill();
+      logoTween?.kill();
+
+      if (!logo) {
+        return;
+      }
+
+      gsap.set(logo, {
+        autoAlpha: window.innerWidth > 1024 ? 1 : 0,
+        yPercent: 0,
+      });
+
+      if (window.innerWidth <= 1024) {
+        return;
+      }
+
+      logoTween = gsap.to(logo, {
+        autoAlpha: 0,
+        yPercent: 8,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".whatIDO",
+          start: "top top",
+          end: "+=220",
+          scrub: true,
+          invalidateOnRefresh: true,
+        },
+      });
+    };
+
+    syncLogoVisibility();
+    window.addEventListener("resize", syncLogoVisibility);
+
     return () => {
       containerRef.current.forEach((container) => {
         if (container) {
           container.removeEventListener("click", () => handleClick(container));
         }
       });
+      window.removeEventListener("resize", syncLogoVisibility);
+      logoTween?.scrollTrigger?.kill();
+      logoTween?.kill();
     };
   }, []);
+
   return (
     <div className="whatIDO">
+      <div className="what-logo" ref={logoRef} aria-hidden="true">
+        <div className="what-logo-glow"></div>
+        <div className="what-logo-frame">
+          <img
+            src={logoSrc}
+            alt="Siddharth Rastogi logo"
+            className="what-logo-image"
+          />
+        </div>
+      </div>
       <div className="what-box">
         <h2 className="title">
           W<span className="hat-h2">HAT</span>

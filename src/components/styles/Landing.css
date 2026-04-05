@@ -109,6 +109,7 @@
   z-index: 0;
   bottom: 50px;
   pointer-events: inherit;
+  overflow: visible;
 }
 .character-model::after {
   content: "";
@@ -155,6 +156,47 @@
   z-index: 3;
   transform: translate(-50%, -50%);
   border-radius: 50%;
+}
+.character-model-static {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  pointer-events: none;
+}
+.character-static-frame {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: clamp(160px, 26vw, 300px);
+  z-index: 2;
+  filter: drop-shadow(0 16px 40px rgba(0, 0, 0, 0.55))
+    drop-shadow(0 0 40px rgba(194, 164, 255, 0.28));
+}
+.character-static-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  opacity: 0.98;
+  transform-origin: center center;
+}
+.character-static-glow {
+  position: absolute;
+  left: 50%;
+  bottom: 5%;
+  transform: translateX(-50%);
+  width: min(70vw, 520px);
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(194, 164, 255, 0.45) 0%,
+    rgba(194, 164, 255, 0.2) 35%,
+    rgba(194, 164, 255, 0) 72%
+  );
+  filter: blur(24px);
+  z-index: 1;
 }
 .landing-intro {
   position: absolute;
@@ -273,6 +315,9 @@ h2.landing-info-h2 {
   .character-model {
     height: 80vh;
   }
+  .character-static-frame {
+    width: clamp(180px, 24vw, 340px);
+  }
   .landing-intro h2 {
     font-size: 25px;
   }
@@ -297,6 +342,28 @@ h2.landing-info-h2 {
     bottom: 0;
     z-index: 11;
     position: fixed;
+  }
+  .character-model-static {
+    justify-content: center;
+  }
+  .character-static-frame {
+    left: 50%;
+    right: auto;
+    top: 50%;
+    bottom: auto;
+    transform: translate(-50%, -50%);
+    width: clamp(140px, 10vw, 200px);
+  }
+  .character-static-image {
+    transform: scale(4);
+  }
+  .character-static-glow {
+    left: 50%;
+    right: auto;
+    top: 50%;
+    bottom: auto;
+    transform: translate(-50%, -50%);
+    width: clamp(420px, 42vw, 760px);
   }
   .character-model::after,
   .character-model::before {

@@ -17,11 +17,20 @@ const Work = () => {
                 <h3>01</h3>
                 <div>
                   <h4>Vimukti Sansthan</h4>
-                  <p>Community-based Institutional Project</p>
+                  <p>Institutional Project</p>
                 </div>
               </div>
 
-              <p>EMPOWERING EDUCATION FOR UNDERPRIVILEGED GIRLS</p>
+              <div className="work-copy">
+                <p className="work-tagline">
+                  Empowering education for underprivileged girls
+                </p>
+                <p className="work-description">
+                  An institutional campus proposal centered on safe learning
+                  spaces, open courtyards, and a nurturing environment that
+                  supports education with dignity.
+                </p>
+              </div>
             </div>
 
             <WorkImage
@@ -40,7 +49,14 @@ const Work = () => {
                 </div>
               </div>
 
-              <p>Floating Restaurant, Mumbai</p>
+              <div className="work-copy">
+                <p className="work-tagline">Floating Restaurant, Mumbai</p>
+                <p className="work-description">
+                  A hospitality interior envisioned as a refined floating dining
+                  experience, shaped by panoramic waterfront views, warm
+                  materiality, and fluid spatial sequencing.
+                </p>
+              </div>
             </div>
 
             <WorkImage
@@ -59,7 +75,14 @@ const Work = () => {
                 </div>
               </div>
 
-              <p>Buffalo Art Museum, NY</p>
+              <div className="work-copy">
+                <p className="work-tagline">Buffalo Art Museum, NY</p>
+                <p className="work-description">
+                  An academic museum proposal exploring civic presence, gallery
+                  circulation, and a contemporary cultural landmark for the
+                  Buffalo urban fabric.
+                </p>
+              </div>
             </div>
 
             <WorkImage
@@ -78,7 +101,16 @@ const Work = () => {
                 </div>
               </div>
 
-              <p>MECHANICAL OBJECT | SPATIAL GENERATOR</p>
+              <div className="work-copy">
+                <p className="work-tagline">
+                  Mechanical object | spatial generator
+                </p>
+                <p className="work-description">
+                  An experimental academic study translating a mechanical system
+                  into spatial form, structural rhythm, and an immersive light
+                  driven experience.
+                </p>
+              </div>
             </div>
 
             <WorkImage
@@ -97,7 +129,14 @@ const Work = () => {
                 </div>
               </div>
 
-              <p>Design For Everybody</p>
+              <div className="work-copy">
+                <p className="work-tagline">Design for everybody</p>
+                <p className="work-description">
+                  An inclusive design proposal focused on accessibility,
+                  permeability, and everyday comfort, creating architecture that
+                  welcomes users of all abilities.
+                </p>
+              </div>
             </div>
 
             <WorkImage
@@ -116,7 +155,14 @@ const Work = () => {
                 </div>
               </div>
 
-              <p>Tranquil Escape to Nature</p>
+              <div className="work-copy">
+                <p className="work-tagline">Tranquil escape to nature</p>
+                <p className="work-description">
+                  A residential project balancing privacy, daylight, and strong
+                  indoor outdoor connections to create a calm retreat rooted in
+                  everyday living.
+                </p>
+              </div>
             </div>
 
             <WorkImage

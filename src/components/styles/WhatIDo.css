@@ -10,6 +10,49 @@
   max-width: 1920px;
   margin: auto;
   z-index: 9;
+  overflow: hidden;
+}
+.what-logo {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+.what-logo-frame {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: clamp(140px, 10vw, 200px);
+  z-index: 2;
+  filter: drop-shadow(0 16px 40px rgba(0, 0, 0, 0.55))
+    drop-shadow(0 0 40px rgba(194, 164, 255, 0.28));
+}
+.what-logo-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  opacity: 0.98;
+  transform: scale(4);
+  transform-origin: center center;
+}
+.what-logo-glow {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: clamp(420px, 42vw, 760px);
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(194, 164, 255, 0.45) 0%,
+    rgba(194, 164, 255, 0.2) 35%,
+    rgba(194, 164, 255, 0) 72%
+  );
+  filter: blur(24px);
+  z-index: 1;
 }
 .what-box {
   width: 50%;
@@ -37,7 +80,7 @@
   height: 500px;
   margin-left: 200px;
   position: relative;
-  display: none;
+  display: flex;
 }
 .what-content {
   width: 450px;
@@ -288,6 +331,9 @@
     height: auto;
     padding: 50px 0px;
     padding-bottom: 50px;
+  }
+  .what-logo {
+    display: none;
   }
   .what-box-in {
     height: 500px;
