@@ -1,6 +1,5 @@
 import * as THREE from "three";
 import { DRACOLoader, GLTF, GLTFLoader } from "three-stdlib";
-import { setCharTimeline, setAllTimeline } from "../../utils/GsapScroll";
 import { decryptFile } from "./decrypt";
 import { withBase } from "../../../utils/basePath";
 
@@ -27,25 +26,42 @@ const setCharacter = (
         loader.load(
           blobUrl,
           async (gltf) => {
-            character = gltf.scene;
-            await renderer.compileAsync(character, camera, scene);
-            character.traverse((child: any) => {
-              if (child.isMesh) {
-                const mesh = child as THREE.Mesh;
-                child.castShadow = true;
-                child.receiveShadow = true;
-                mesh.frustumCulled = true;
+            try {
+              character = gltf.scene;
+              character.traverse((child: any) => {
+                if (child.isMesh) {
+                  const mesh = child as THREE.Mesh;
+                  child.castShadow = true;
+                  child.receiveShadow = true;
+                  mesh.frustumCulled = true;
+                }
+              });
+
+              const footR = character.getObjectByName("footR");
+              const footL = character.getObjectByName("footL");
+              if (footR) {
+                footR.position.y = 3.36;
               }
-            });
-            resolve(gltf);
-            setCharTimeline(character, camera);
-            setAllTimeline();
-            character!.getObjectByName("footR")!.position.y = 3.36;
-            character!.getObjectByName("footL")!.position.y = 3.36;
-            dracoLoader.dispose();
+              if (footL) {
+                footL.position.y = 3.36;
+              }
+
+              resolve(gltf);
+
+              // Shader precompilation is helpful, but it should never block the app from loading.
+              void renderer.compileAsync(character, camera, scene).catch((error) => {
+                console.warn("Character shader precompile failed:", error);
+              });
+            } catch (error) {
+              reject(error);
+            } finally {
+              URL.revokeObjectURL(blobUrl);
+              dracoLoader.dispose();
+            }
           },
           undefined,
           (error) => {
+            URL.revokeObjectURL(blobUrl);
             console.error("Error loading GLTF model:", error);
             reject(error);
           }
