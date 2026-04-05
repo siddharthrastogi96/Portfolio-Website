@@ -1,5 +1,6 @@
 import "./styles/Work.css";
 import WorkImage from "./WorkImage";
+import { withBase } from "../utils/basePath";
 
 const Work = () => {
   return (
@@ -24,7 +25,7 @@ const Work = () => {
             </div>
 
             <WorkImage
-              image="/images/featured.jpg"
+              image={withBase("images/featured.jpg")}
               alt="Vimukti Sansthan Girls School"
             />
           </div>
@@ -43,7 +44,7 @@ const Work = () => {
             </div>
 
             <WorkImage
-              image="/images/cam.jpg"
+              image={withBase("images/cam.jpg")}
               alt="CAM Restaurant Interior"
             />
           </div>
@@ -62,7 +63,7 @@ const Work = () => {
             </div>
 
             <WorkImage
-              image="/images/museum.png"
+              image={withBase("images/museum.png")}
               alt="Nexus Buffalo Museum"
             />
           </div>
@@ -81,7 +82,7 @@ const Work = () => {
             </div>
 
             <WorkImage
-              image="/images/tet.jpg"
+              image={withBase("images/tet.jpg")}
               alt="TET Structural Pavilion"
             />
           </div>
@@ -100,7 +101,7 @@ const Work = () => {
             </div>
 
             <WorkImage
-              image="/images/porosity.png"
+              image={withBase("images/porosity.png")}
               alt="Porosity Housing Project"
             />
           </div>
@@ -119,7 +120,7 @@ const Work = () => {
             </div>
 
             <WorkImage
-              image="/images/resi.png"
+              image={withBase("images/resi.png")}
               alt="Residential Architecture Project"
             />
           </div>

@@ -3,6 +3,7 @@ import "./styles/SocialIcons.css";
 import { TbNotes } from "react-icons/tb";
 import { useEffect } from "react";
 import HoverLinks from "./HoverLinks";
+import { withBase } from "../utils/basePath";
 
 const SocialIcons = () => {
   useEffect(() => {
@@ -67,7 +68,7 @@ const SocialIcons = () => {
             rel="noopener noreferrer"
           >
             <img
-              src="/images/archinect.png"
+              src={withBase("images/archinect.png")}
               alt="Archinect"
               className="social-icon-img"
             />
@@ -81,7 +82,7 @@ const SocialIcons = () => {
             rel="noopener noreferrer"
           >
             <img
-              src="/images/heyzine.png"
+              src={withBase("images/heyzine.png")}
               alt="Heyzine"
               className="social-icon-img"
             />
