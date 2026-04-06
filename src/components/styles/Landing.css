@@ -69,34 +69,6 @@
     transform: translate(calc(100% - 2px), -50%) rotate(360deg);
   }
 }
-.landing-video,
-.landing-image {
-  position: absolute;
-  bottom: 0;
-  height: 95%;
-  left: 50%;
-  transform: translateX(-50%);
-}
-.landing-image img {
-  height: 100%;
-  z-index: 2;
-  position: relative;
-}
-.character-rim {
-  position: absolute;
-  width: 400px;
-  height: 400px;
-  z-index: 1;
-  background-color: #f59bf8;
-  transform: translate(-50%, 36%) scaleX(1.4);
-  box-shadow: inset 66px 35px 85px 0px rgba(85, 0, 255, 0.65);
-  filter: blur(50px);
-  border-radius: 50%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, 100%) scale(1.4);
-  opacity: 0;
-}
 .character-model {
   height: 80%;
   height: 80vh;
@@ -136,26 +108,6 @@
   transform: translateX(-50%);
   z-index: 9;
   position: absolute;
-}
-.character-loaded .character-rim {
-  animation: backlight 3s forwards;
-  animation-delay: 0.3s;
-  opacity: 0;
-}
-.character-model canvas {
-  position: relative;
-  pointer-events: none;
-  z-index: 2;
-}
-.character-hover {
-  position: absolute;
-  width: 280px;
-  height: 280px;
-  top: 50%;
-  left: 50%;
-  z-index: 3;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
 }
 .character-model-static {
   display: flex;
@@ -254,10 +206,6 @@
   text-transform: uppercase;
   letter-spacing: 2px;
 }
-.landing-h2-info-1 {
-  position: absolute;
-  top: 0;
-}
 h2.landing-info-h2 {
   color: #c481ff;
   font-size: 42px;
@@ -267,10 +215,6 @@ h2.landing-info-h2 {
   font-weight: 600;
   position: relative;
   margin-left: visible;
-}
-.landing-h2-2 {
-  position: absolute;
-  top: 0;
 }
 .landing-info-h2::after {
   content: "";

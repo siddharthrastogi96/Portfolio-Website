@@ -62,23 +62,6 @@ export function initialFX() {
     }
   );
 
-  const textProps = { type: "chars,lines", linesClass: "split-h2" };
-
-  const landingText2 = createSplitText(".landing-h2-info", textProps);
-  animateChars(
-    landingText2,
-    { opacity: 0, y: 80, filter: "blur(5px)" },
-    {
-      opacity: 1,
-      duration: 1.2,
-      filter: "blur(0px)",
-      ease: "power3.inOut",
-      y: 0,
-      stagger: 0.025,
-      delay: 0.3,
-    }
-  );
-
   if (document.querySelector(".landing-info-h2")) {
     gsap.fromTo(
       ".landing-info-h2",
@@ -104,69 +87,4 @@ export function initialFX() {
     }
   );
 
-  const landingText3 = createSplitText(".landing-h2-info-1", textProps);
-  const landingText4 = createSplitText(".landing-h2-1", textProps);
-  const landingText5 = createSplitText(".landing-h2-2", textProps);
-
-  if (landingText2 && landingText3) {
-    loopText(landingText2, landingText3);
-  }
-  if (landingText4 && landingText5) {
-    loopText(landingText4, landingText5);
-  }
-}
-
-function loopText(text1: SplitText, text2: SplitText) {
-  const tl = gsap.timeline({ repeat: -1, repeatDelay: 1 });
-  const delay = 4;
-  const delay2 = delay * 2 + 1;
-
-  tl.fromTo(
-    text2.chars,
-    { opacity: 0, y: 80 },
-    {
-      opacity: 1,
-      duration: 1.2,
-      ease: "power3.inOut",
-      y: 0,
-      stagger: 0.1,
-      delay: delay,
-    },
-    0
-  )
-    .fromTo(
-      text1.chars,
-      { y: 80 },
-      {
-        duration: 1.2,
-        ease: "power3.inOut",
-        y: 0,
-        stagger: 0.1,
-        delay: delay2,
-      },
-      1
-    )
-    .fromTo(
-      text1.chars,
-      { y: 0 },
-      {
-        y: -80,
-        duration: 1.2,
-        ease: "power3.inOut",
-        stagger: 0.1,
-        delay: delay,
-      },
-      0
-    )
-    .to(
-      text2.chars,
-      {
-        y: -80,
-        duration: 1.2,
-        ease: "power3.inOut",
-        stagger: 0.1,
-        delay: delay2,
-      },
-      1
-    );
 }
